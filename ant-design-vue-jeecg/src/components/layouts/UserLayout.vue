@@ -4,12 +4,12 @@
       <div class="top">
         <div class="header">
           <a href="/">
-            <img src="~@/assets/logo.svg" class="logo" alt="logo">
-            <span class="title">Jeecg Boot</span>
+            <img src="~@/assets/dinosaur-fossil.jpg" class="logo" alt="logo">
+            <span class="title">古生物化石管理系统</span>
           </a>
         </div>
         <div class="desc">
-          Jeecg Boot 是中国最具影响力的 企业级 低代码平台
+          辽宁省地质勘探矿业集团-古生物化石普查数据库系统
         </div>
       </div>
 
@@ -17,12 +17,12 @@
 
       <div class="footer">
         <div class="links">
-          <a href="http://doc.jeecg.com" target="_blank">帮助</a>
-          <a href="https://github.com/zhangdaiscott/jeecg-boot" target="_blank">隐私</a>
-          <a href="https://github.com/zhangdaiscott/jeecg-boot/blob/master/LICENSE" target="_blank">条款</a>
+          <a href="http://localhost:3000" target="_blank">帮助</a>
+          <a href="http://localhost:3000" target="_blank">隐私</a>
+          <a href="http://localhost:3000/LICENSE" target="_blank">条款</a>
         </div>
         <div class="copyright">
-          Copyright &copy; 2019 <a href="http://www.jeecg.com" target="_blank">JEECG开源社区</a> 出品
+          Copyright &copy; 2021 <a href="http://www.lngemg.com" target="_blank">辽宁省地矿集团</a> 版权所有
         </div>
       </div>
     </div>
