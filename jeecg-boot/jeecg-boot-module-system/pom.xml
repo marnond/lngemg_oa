@@ -30,6 +30,13 @@
 	</repositories>
 
 	<dependencies>
+		<!-- fossil specimen -->
+		<dependency>
+			<groupId>org.jeecgframework.boot</groupId>
+			<artifactId>jeecg-fossil-specimen</artifactId>
+			<version>${jeecgboot.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.jeecgframework.boot</groupId>
 			<artifactId>jeecg-system-local-api</artifactId>

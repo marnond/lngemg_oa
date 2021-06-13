@@ -1,4 +1,4 @@
-package com.lngemg.modules.fossil.entity;
+package org.jeecg.modules.fossil.entity;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
@@ -20,7 +20,7 @@ import lombok.experimental.Accessors;
 /**
  * @Description: 古生物化石标本登记表
  * @Author: jeecg-boot
- * @Date:   2021-06-08
+ * @Date:   2021-06-18
  * @Version: V1.0
  */
 @Data
@@ -67,37 +67,43 @@ public class FosSpecimenRegisterInfo implements Serializable {
 	@Excel(name = "收藏日期", width = 15)
     @ApiModelProperty(value = "收藏日期")
     private java.lang.String collectDate;
-	/**标本来源:自采/购置/交换/捐赠/罚没/其它*/
-	@Excel(name = "标本来源:自采/购置/交换/捐赠/罚没/其它", width = 15)
-    @ApiModelProperty(value = "标本来源:自采/购置/交换/捐赠/罚没/其它")
+	/**标本来源*/
+	@Excel(name = "标本来源", width = 15, dicCode = "fos_specimen_origin")
+	@Dict(dicCode = "fos_specimen_origin")
+    @ApiModelProperty(value = "标本来源")
     private java.lang.String specimenOrigin;
 	/**标本位置*/
 	@Excel(name = "标本位置", width = 15)
     @ApiModelProperty(value = "标本位置")
     private java.lang.String specimenPosition;
-	/**模式标本:是/否*/
-	@Excel(name = "模式标本:是/否", width = 15)
-    @ApiModelProperty(value = "模式标本:是/否")
+	/**模式标本*/
+	@Excel(name = "模式标本", width = 15, dicCode = "fos_model")
+	@Dict(dicCode = "fos_model")
+    @ApiModelProperty(value = "模式标本")
     private java.lang.String model;
-	/**模式类型:正模/副模/其它*/
-	@Excel(name = "模式类型:正模/副模/其它", width = 15)
-    @ApiModelProperty(value = "模式类型:正模/副模/其它")
+	/**模式类型*/
+	@Excel(name = "模式类型", width = 15, dicCode = "fos_model_type")
+	@Dict(dicCode = "fos_model_type")
+    @ApiModelProperty(value = "模式类型")
     private java.lang.String modelType;
 	/**标本类别*/
 	@Excel(name = "标本类别", width = 15)
     @ApiModelProperty(value = "标本类别")
     private java.lang.String specimenFamily;
-	/**标本去向:馆藏/借出研究/出境/国内展出/遗失/注销*/
-	@Excel(name = "标本去向:馆藏/借出研究/出境/国内展出/遗失/注销", width = 15)
-    @ApiModelProperty(value = "标本去向:馆藏/借出研究/出境/国内展出/遗失/注销")
+	/**标本去向*/
+	@Excel(name = "标本去向", width = 15, dicCode = "fos_specimen_whereabouts")
+	@Dict(dicCode = "fos_specimen_whereabouts")
+    @ApiModelProperty(value = "标本去向")
     private java.lang.String specimenWhereabouts;
-	/**保护级别:一级/二级/三级/待定*/
-	@Excel(name = "保护级别:一级/二级/三级/待定", width = 15)
-    @ApiModelProperty(value = "保护级别:一级/二级/三级/待定")
+	/**保护级别*/
+	@Excel(name = "保护级别", width = 15, dicCode = "fos_protect_level")
+	@Dict(dicCode = "fos_protect_level")
+    @ApiModelProperty(value = "保护级别")
     private java.lang.String protectLevel;
-	/**标本状态:完好/破损*/
-	@Excel(name = "标本状态:完好/破损", width = 15)
-    @ApiModelProperty(value = "标本状态:完好/破损")
+	/**标本状态*/
+	@Excel(name = "标本状态", width = 15, dicCode = "fos_protect_state")
+	@Dict(dicCode = "fos_protect_state")
+    @ApiModelProperty(value = "标本状态")
     private java.lang.String protectState;
 	/**产出地点*/
 	@Excel(name = "产出地点", width = 15)
@@ -207,4 +213,23 @@ public class FosSpecimenRegisterInfo implements Serializable {
 	@Excel(name = "修复记录", width = 15)
     @ApiModelProperty(value = "修复记录")
     private java.lang.String repairRecord;
+	/**创建人*/
+    @ApiModelProperty(value = "创建人")
+    private java.lang.String createBy;
+	/**创建日期*/
+	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @ApiModelProperty(value = "创建日期")
+    private java.util.Date createTime;
+	/**更新人*/
+    @ApiModelProperty(value = "更新人")
+    private java.lang.String updateBy;
+	/**更新日期*/
+	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @ApiModelProperty(value = "更新日期")
+    private java.util.Date updateTime;
+	/**所属部门*/
+    @ApiModelProperty(value = "所属部门")
+    private java.lang.String sysOrgCode;
 }

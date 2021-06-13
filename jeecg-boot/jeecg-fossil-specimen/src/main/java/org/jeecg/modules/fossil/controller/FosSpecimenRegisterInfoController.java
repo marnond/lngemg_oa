@@ -1,4 +1,4 @@
-package com.lngemg.modules.fossil.controller;
+package org.jeecg.modules.fossil.controller;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.util.oConvertUtils;
-import com.lngemg.modules.fossil.entity.FosSpecimenRegisterInfo;
-import com.lngemg.modules.fossil.service.IFosSpecimenRegisterInfoService;
+import org.jeecg.modules.fossil.entity.FosSpecimenRegisterInfo;
+import org.jeecg.modules.fossil.service.IFosSpecimenRegisterInfoService;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -39,7 +39,7 @@ import org.jeecg.common.aspect.annotation.AutoLog;
  /**
  * @Description: 古生物化石标本登记表
  * @Author: jeecg-boot
- * @Date:   2021-06-08
+ * @Date:   2021-06-18
  * @Version: V1.0
  */
 @Api(tags="古生物化石标本登记表")

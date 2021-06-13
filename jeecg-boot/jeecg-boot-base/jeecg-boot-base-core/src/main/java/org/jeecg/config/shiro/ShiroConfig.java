@@ -116,6 +116,9 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/sys/annountCement/show/**", "anon");
         // update-end--Author:sunjianlei Date:20210510 for：排除消息通告查看详情页面（用于第三方APP）
 
+        //化石界面
+        filterChainDefinitionMap.put("/fossil/fosSpecimenRegisterInfo/**", "anon");
+
         //积木报表排除
         filterChainDefinitionMap.put("/jmreport/**", "anon");
         filterChainDefinitionMap.put("/**/*.js.map", "anon");
