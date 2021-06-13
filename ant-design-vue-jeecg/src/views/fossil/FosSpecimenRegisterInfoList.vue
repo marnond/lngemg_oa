@@ -4,6 +4,21 @@
     <div class="table-page-search-wrapper">
       <a-form layout="inline" @keyup.enter.native="searchQuery">
         <a-row :gutter="24">
+          <a-col :xl="6" :lg="7" :md="8" :sm="24">
+            <a-form-item label="标本来源">
+              <j-dict-select-tag placeholder="请选择标本来源" v-model="queryParam.specimenOrigin" dictCode="fos_specimen_origin"/>
+            </a-form-item>
+          </a-col>
+          <a-col :xl="6" :lg="7" :md="8" :sm="24">
+            <span style="float: left;overflow: hidden;" class="table-page-search-submitButtons">
+              <a-button type="primary" @click="searchQuery" icon="search">查询</a-button>
+              <a-button type="primary" @click="searchReset" icon="reload" style="margin-left: 8px">重置</a-button>
+              <a @click="handleToggleSearch" style="margin-left: 8px">
+                {{ toggleSearchStatus ? '收起' : '展开' }}
+                <a-icon :type="toggleSearchStatus ? 'up' : 'down'"/>
+              </a>
+            </span>
+          </a-col>
         </a-row>
       </a-form>
     </div>
@@ -99,6 +114,7 @@
   import { mixinDevice } from '@/utils/mixin'
   import { JeecgListMixin } from '@/mixins/JeecgListMixin'
   import FosSpecimenRegisterInfoModal from './modules/FosSpecimenRegisterInfoModal'
+  import {filterMultiDictText} from '@/components/dict/JDictSelectUtil'
 
   export default {
     name: 'FosSpecimenRegisterInfoList',
@@ -162,9 +178,9 @@
             dataIndex: 'collectDate'
           },
           {
-            title:'标本来源:自采/购置/交换/捐赠/罚没/其它',
+            title:'标本来源',
             align:"center",
-            dataIndex: 'specimenOrigin'
+            dataIndex: 'specimenOrigin_dictText'
           },
           {
             title:'标本位置',
@@ -172,14 +188,14 @@
             dataIndex: 'specimenPosition'
           },
           {
-            title:'模式标本:是/否',
+            title:'模式标本',
             align:"center",
-            dataIndex: 'model'
+            dataIndex: 'model_dictText'
           },
           {
-            title:'模式类型:正模/副模/其它',
+            title:'模式类型',
             align:"center",
-            dataIndex: 'modelType'
+            dataIndex: 'modelType_dictText'
           },
           {
             title:'标本类别',
@@ -187,19 +203,19 @@
             dataIndex: 'specimenFamily'
           },
           {
-            title:'标本去向:馆藏/借出研究/出境/国内展出/遗失/注销',
+            title:'标本去向',
             align:"center",
-            dataIndex: 'specimenWhereabouts'
+            dataIndex: 'specimenWhereabouts_dictText'
           },
           {
-            title:'保护级别:一级/二级/三级/待定',
+            title:'保护级别',
             align:"center",
-            dataIndex: 'protectLevel'
+            dataIndex: 'protectLevel_dictText'
           },
           {
-            title:'标本状态:完好/破损',
+            title:'标本状态',
             align:"center",
-            dataIndex: 'protectState'
+            dataIndex: 'protectState_dictText'
           },
           {
             title:'产出地点',
@@ -337,6 +353,37 @@
             dataIndex: 'repairRecord'
           },
           {
+            title:'创建人',
+            align:"center",
+            dataIndex: 'createBy'
+          },
+          {
+            title:'创建日期',
+            align:"center",
+            dataIndex: 'createTime',
+            customRender:function (text) {
+              return !text?"":(text.length>10?text.substr(0,10):text)
+            }
+          },
+          {
+            title:'更新人',
+            align:"center",
+            dataIndex: 'updateBy'
+          },
+          {
+            title:'更新日期',
+            align:"center",
+            dataIndex: 'updateTime',
+            customRender:function (text) {
+              return !text?"":(text.length>10?text.substr(0,10):text)
+            }
+          },
+          {
+            title:'所属部门',
+            align:"center",
+            dataIndex: 'sysOrgCode'
+          },
+          {
             title: '操作',
             dataIndex: 'action',
             align:"center",
@@ -370,49 +417,54 @@
       },
       getSuperFieldList(){
         let fieldList=[];
-        fieldList.push({type:'string',value:'district',text:'行政区'})
-        fieldList.push({type:'string',value:'collector',text:'收藏人'})
-        fieldList.push({type:'string',value:'collectorNature',text:'收藏人性质'})
-        fieldList.push({type:'string',value:'contactAndPhone',text:'联系人及联系电话'})
-        fieldList.push({type:'string',value:'specimenName',text:'标本名称'})
-        fieldList.push({type:'string',value:'latinName',text:'拉丁文名称'})
-        fieldList.push({type:'string',value:'specimenId',text:'编号'})
-        fieldList.push({type:'string',value:'collectDate',text:'收藏日期'})
-        fieldList.push({type:'string',value:'specimenOrigin',text:'标本来源:自采/购置/交换/捐赠/罚没/其它'})
-        fieldList.push({type:'string',value:'specimenPosition',text:'标本位置'})
-        fieldList.push({type:'string',value:'model',text:'模式标本:是/否'})
-        fieldList.push({type:'string',value:'modelType',text:'模式类型:正模/副模/其它'})
-        fieldList.push({type:'string',value:'specimenFamily',text:'标本类别'})
-        fieldList.push({type:'string',value:'specimenWhereabouts',text:'标本去向:馆藏/借出研究/出境/国内展出/遗失/注销'})
-        fieldList.push({type:'string',value:'protectLevel',text:'保护级别:一级/二级/三级/待定'})
-        fieldList.push({type:'string',value:'protectState',text:'标本状态:完好/破损'})
-        fieldList.push({type:'string',value:'specimenSite',text:'产出地点'})
-        fieldList.push({type:'string',value:'age',text:'时代'})
-        fieldList.push({type:'string',value:'discription',text:'标本描述'})
-        fieldList.push({type:'string',value:'appraiser',text:'鉴定人'})
-        fieldList.push({type:'string',value:'appraisalDate',text:'鉴定日期'})
-        fieldList.push({type:'string',value:'siteLongitude',text:'产地经.'})
-        fieldList.push({type:'string',value:'siteLatitude',text:'产地纬.'})
-        fieldList.push({type:'int',value:'quantity',text:'数量'})
-        fieldList.push({type:'string',value:'serialNumber',text:'自采号'})
-        fieldList.push({type:'string',value:'specimenSize',text:'尺寸'})
-        fieldList.push({type:'string',value:'rockCharacter',text:'岩性'})
-        fieldList.push({type:'string',value:'rockUnit',text:'地质层位'})
-        fieldList.push({type:'string',value:'phylum',text:'门'})
-        fieldList.push({type:'string',value:'cclass',text:'纲'})
-        fieldList.push({type:'string',value:'oorder',text:'目'})
-        fieldList.push({type:'string',value:'family',text:'科'})
-        fieldList.push({type:'string',value:'genus',text:'属'})
-        fieldList.push({type:'string',value:'species',text:'种'})
-        fieldList.push({type:'string',value:'excavationUnit',text:'发掘单位'})
-        fieldList.push({type:'string',value:'excavationDate',text:'发掘日期'})
-        fieldList.push({type:'string',value:'excavationReason',text:'发掘原因'})
-        fieldList.push({type:'string',value:'excavationReply',text:'发掘批复函'})
-        fieldList.push({type:'string',value:'excavationReview',text:'发掘评审'})
-        fieldList.push({type:'string',value:'remarks',text:'备注'})
-        fieldList.push({type:'string',value:'serialId',text:'自设编号'})
-        fieldList.push({type:'string',value:'documentation',text:'文献记录'})
-        fieldList.push({type:'string',value:'repairRecord',text:'修复记录'})
+        fieldList.push({type:'string',value:'district',text:'行政区',dictCode:''})
+        fieldList.push({type:'string',value:'collector',text:'收藏人',dictCode:''})
+        fieldList.push({type:'string',value:'collectorNature',text:'收藏人性质',dictCode:''})
+        fieldList.push({type:'string',value:'contactAndPhone',text:'联系人及联系电话',dictCode:''})
+        fieldList.push({type:'string',value:'specimenName',text:'标本名称',dictCode:''})
+        fieldList.push({type:'string',value:'latinName',text:'拉丁文名称',dictCode:''})
+        fieldList.push({type:'string',value:'specimenId',text:'编号',dictCode:''})
+        fieldList.push({type:'string',value:'collectDate',text:'收藏日期',dictCode:''})
+        fieldList.push({type:'string',value:'specimenOrigin',text:'标本来源',dictCode:'fos_specimen_origin'})
+        fieldList.push({type:'string',value:'specimenPosition',text:'标本位置',dictCode:''})
+        fieldList.push({type:'string',value:'model',text:'模式标本',dictCode:'fos_model'})
+        fieldList.push({type:'string',value:'modelType',text:'模式类型',dictCode:'fos_model_type'})
+        fieldList.push({type:'string',value:'specimenFamily',text:'标本类别',dictCode:''})
+        fieldList.push({type:'string',value:'specimenWhereabouts',text:'标本去向',dictCode:'fos_specimen_whereabouts'})
+        fieldList.push({type:'string',value:'protectLevel',text:'保护级别',dictCode:'fos_protect_level'})
+        fieldList.push({type:'string',value:'protectState',text:'标本状态',dictCode:'fos_protect_state'})
+        fieldList.push({type:'string',value:'specimenSite',text:'产出地点',dictCode:''})
+        fieldList.push({type:'string',value:'age',text:'时代',dictCode:''})
+        fieldList.push({type:'string',value:'discription',text:'标本描述',dictCode:''})
+        fieldList.push({type:'string',value:'appraiser',text:'鉴定人',dictCode:''})
+        fieldList.push({type:'string',value:'appraisalDate',text:'鉴定日期',dictCode:''})
+        fieldList.push({type:'string',value:'siteLongitude',text:'产地经.',dictCode:''})
+        fieldList.push({type:'string',value:'siteLatitude',text:'产地纬.',dictCode:''})
+        fieldList.push({type:'int',value:'quantity',text:'数量',dictCode:''})
+        fieldList.push({type:'string',value:'serialNumber',text:'自采号',dictCode:''})
+        fieldList.push({type:'string',value:'specimenSize',text:'尺寸',dictCode:''})
+        fieldList.push({type:'string',value:'rockCharacter',text:'岩性',dictCode:''})
+        fieldList.push({type:'string',value:'rockUnit',text:'地质层位',dictCode:''})
+        fieldList.push({type:'string',value:'phylum',text:'门',dictCode:''})
+        fieldList.push({type:'string',value:'cclass',text:'纲',dictCode:''})
+        fieldList.push({type:'string',value:'oorder',text:'目',dictCode:''})
+        fieldList.push({type:'string',value:'family',text:'科',dictCode:''})
+        fieldList.push({type:'string',value:'genus',text:'属',dictCode:''})
+        fieldList.push({type:'string',value:'species',text:'种',dictCode:''})
+        fieldList.push({type:'string',value:'excavationUnit',text:'发掘单位',dictCode:''})
+        fieldList.push({type:'string',value:'excavationDate',text:'发掘日期',dictCode:''})
+        fieldList.push({type:'string',value:'excavationReason',text:'发掘原因',dictCode:''})
+        fieldList.push({type:'string',value:'excavationReply',text:'发掘批复函',dictCode:''})
+        fieldList.push({type:'string',value:'excavationReview',text:'发掘评审',dictCode:''})
+        fieldList.push({type:'string',value:'remarks',text:'备注',dictCode:''})
+        fieldList.push({type:'string',value:'serialId',text:'自设编号',dictCode:''})
+        fieldList.push({type:'string',value:'documentation',text:'文献记录',dictCode:''})
+        fieldList.push({type:'string',value:'repairRecord',text:'修复记录',dictCode:''})
+        fieldList.push({type:'string',value:'createBy',text:'创建人',dictCode:''})
+        fieldList.push({type:'date',value:'createTime',text:'创建日期'})
+        fieldList.push({type:'string',value:'updateBy',text:'更新人',dictCode:''})
+        fieldList.push({type:'date',value:'updateTime',text:'更新日期'})
+        fieldList.push({type:'string',value:'sysOrgCode',text:'所属部门',dictCode:''})
         this.superFieldList = fieldList
       }
     }
