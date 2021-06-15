@@ -5,7 +5,14 @@
         <a-row>
           <a-col :span="12">
             <a-form-model-item label="行政区" :labelCol="labelCol" :wrapperCol="wrapperCol" prop="district">
-              <a-input v-model="model.district" placeholder="请输入行政区"  ></a-input>
+  	          <j-tree-select
+                ref="treeSelect"
+                placeholder="请选择行政区"
+                v-model="model.district"
+                dict="fos_sys_area,area_name,id"
+                pidValue="0"
+                >
+              </j-tree-select>
             </a-form-model-item>
           </a-col>
           <a-col :span="12">
@@ -15,7 +22,7 @@
           </a-col>
           <a-col :span="12">
             <a-form-model-item label="收藏人性质" :labelCol="labelCol" :wrapperCol="wrapperCol" prop="collectorNature">
-              <a-input v-model="model.collectorNature" placeholder="请输入收藏人性质"  ></a-input>
+              <j-dict-select-tag type="list" v-model="model.collectorNature" dictCode="fos_collector_nature" placeholder="请选择收藏人性质" />
             </a-form-model-item>
           </a-col>
           <a-col :span="12">
@@ -34,13 +41,18 @@
             </a-form-model-item>
           </a-col>
           <a-col :span="12">
+            <a-form-model-item label="图片" :labelCol="labelCol" :wrapperCol="wrapperCol" prop="specimenPictures">
+              <j-image-upload isMultiple  v-model="model.specimenPictures" ></j-image-upload>
+            </a-form-model-item>
+          </a-col>
+          <a-col :span="12">
             <a-form-model-item label="编号" :labelCol="labelCol" :wrapperCol="wrapperCol" prop="specimenId">
               <a-input v-model="model.specimenId" placeholder="请输入编号"  ></a-input>
             </a-form-model-item>
           </a-col>
-          <a-col :span="12">
+          <a-col :span="12">fileList
             <a-form-model-item label="收藏日期" :labelCol="labelCol" :wrapperCol="wrapperCol" prop="collectDate">
-              <a-input v-model="model.collectDate" placeholder="请输入收藏日期"  ></a-input>
+              <j-date placeholder="请选择收藏日期" v-model="model.collectDate"  style="width: 100%" />
             </a-form-model-item>
           </a-col>
           <a-col :span="12">
@@ -55,7 +67,7 @@
           </a-col>
           <a-col :span="12">
             <a-form-model-item label="模式标本" :labelCol="labelCol" :wrapperCol="wrapperCol" prop="model">
-              <j-dict-select-tag type="list" v-model="model.model" dictCode="is_open" placeholder="请选择模式标本" />
+              <j-dict-select-tag type="radio" v-model="model.model" dictCode="is_open" placeholder="请选择模式标本" />
             </a-form-model-item>
           </a-col>
           <a-col :span="12">
@@ -65,7 +77,7 @@
           </a-col>
           <a-col :span="12">
             <a-form-model-item label="标本类别" :labelCol="labelCol" :wrapperCol="wrapperCol" prop="specimenFamily">
-              <a-input v-model="model.specimenFamily" placeholder="请输入标本类别"  ></a-input>
+              <j-dict-select-tag type="list" v-model="model.specimenFamily" dictCode="fos_specimen_family" placeholder="请选择标本类别" />
             </a-form-model-item>
           </a-col>
           <a-col :span="12">
@@ -105,7 +117,7 @@
           </a-col>
           <a-col :span="12">
             <a-form-model-item label="鉴定日期" :labelCol="labelCol" :wrapperCol="wrapperCol" prop="appraisalDate">
-              <a-input v-model="model.appraisalDate" placeholder="请输入鉴定日期"  ></a-input>
+              <j-date placeholder="请选择鉴定日期" v-model="model.appraisalDate"  style="width: 100%" />
             </a-form-model-item>
           </a-col>
           <a-col :span="12">
@@ -180,7 +192,7 @@
           </a-col>
           <a-col :span="12">
             <a-form-model-item label="发掘日期" :labelCol="labelCol" :wrapperCol="wrapperCol" prop="excavationDate">
-              <a-input v-model="model.excavationDate" placeholder="请输入发掘日期"  ></a-input>
+              <j-date placeholder="请选择发掘日期" v-model="model.excavationDate"  style="width: 100%" />
             </a-form-model-item>
           </a-col>
           <a-col :span="12">

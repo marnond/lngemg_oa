@@ -4,21 +4,6 @@
     <div class="table-page-search-wrapper">
       <a-form layout="inline" @keyup.enter.native="searchQuery">
         <a-row :gutter="24">
-          <a-col :xl="6" :lg="7" :md="8" :sm="24">
-            <a-form-item label="标本来源">
-              <j-dict-select-tag placeholder="请选择标本来源" v-model="queryParam.specimenOrigin" dictCode="fos_specimen_origin"/>
-            </a-form-item>
-          </a-col>
-          <a-col :xl="6" :lg="7" :md="8" :sm="24">
-            <span style="float: left;overflow: hidden;" class="table-page-search-submitButtons">
-              <a-button type="primary" @click="searchQuery" icon="search">查询</a-button>
-              <a-button type="primary" @click="searchReset" icon="reload" style="margin-left: 8px">重置</a-button>
-              <a @click="handleToggleSearch" style="margin-left: 8px">
-                {{ toggleSearchStatus ? '收起' : '展开' }}
-                <a-icon :type="toggleSearchStatus ? 'up' : 'down'"/>
-              </a>
-            </span>
-          </a-col>
         </a-row>
       </a-form>
     </div>
@@ -140,7 +125,7 @@
           {
             title:'行政区',
             align:"center",
-            dataIndex: 'district'
+            dataIndex: 'district_dictText'
           },
           {
             title:'收藏人',
@@ -150,7 +135,7 @@
           {
             title:'收藏人性质',
             align:"center",
-            dataIndex: 'collectorNature'
+            dataIndex: 'collectorNature_dictText'
           },
           {
             title:'联系人及联系电话',
@@ -168,6 +153,12 @@
             dataIndex: 'latinName'
           },
           {
+            title:'图片',
+            align:"center",
+            dataIndex: 'specimenPictures',
+            scopedSlots: {customRender: 'imgSlot'}
+          },
+          {
             title:'编号',
             align:"center",
             dataIndex: 'specimenId'
@@ -175,7 +166,10 @@
           {
             title:'收藏日期',
             align:"center",
-            dataIndex: 'collectDate'
+            dataIndex: 'collectDate',
+            customRender:function (text) {
+              return !text?"":(text.length>10?text.substr(0,10):text)
+            }
           },
           {
             title:'标本来源',
@@ -200,7 +194,7 @@
           {
             title:'标本类别',
             align:"center",
-            dataIndex: 'specimenFamily'
+            dataIndex: 'specimenFamily_dictText'
           },
           {
             title:'标本去向',
@@ -240,7 +234,10 @@
           {
             title:'鉴定日期',
             align:"center",
-            dataIndex: 'appraisalDate'
+            dataIndex: 'appraisalDate',
+            customRender:function (text) {
+              return !text?"":(text.length>10?text.substr(0,10):text)
+            }
           },
           {
             title:'产地经.',
@@ -315,7 +312,10 @@
           {
             title:'发掘日期',
             align:"center",
-            dataIndex: 'excavationDate'
+            dataIndex: 'excavationDate',
+            customRender:function (text) {
+              return !text?"":(text.length>10?text.substr(0,10):text)
+            }
           },
           {
             title:'发掘原因',
@@ -417,19 +417,20 @@
       },
       getSuperFieldList(){
         let fieldList=[];
-        fieldList.push({type:'string',value:'district',text:'行政区',dictCode:''})
+        fieldList.push({type:'string',value:'district',text:'行政区'})
         fieldList.push({type:'string',value:'collector',text:'收藏人',dictCode:''})
-        fieldList.push({type:'string',value:'collectorNature',text:'收藏人性质',dictCode:''})
+        fieldList.push({type:'string',value:'collectorNature',text:'收藏人性质',dictCode:'fos_collector_nature'})
         fieldList.push({type:'string',value:'contactAndPhone',text:'联系人及联系电话',dictCode:''})
         fieldList.push({type:'string',value:'specimenName',text:'标本名称',dictCode:''})
         fieldList.push({type:'string',value:'latinName',text:'拉丁文名称',dictCode:''})
+        fieldList.push({type:'string',value:'specimenPictures',text:'图片',dictCode:''})
         fieldList.push({type:'string',value:'specimenId',text:'编号',dictCode:''})
-        fieldList.push({type:'string',value:'collectDate',text:'收藏日期',dictCode:''})
+        fieldList.push({type:'date',value:'collectDate',text:'收藏日期'})
         fieldList.push({type:'string',value:'specimenOrigin',text:'标本来源',dictCode:'fos_specimen_origin'})
         fieldList.push({type:'string',value:'specimenPosition',text:'标本位置',dictCode:''})
-        fieldList.push({type:'string',value:'model',text:'模式标本',dictCode:'fos_model'})
+        fieldList.push({type:'string',value:'model',text:'模式标本',dictCode:'is_open'})
         fieldList.push({type:'string',value:'modelType',text:'模式类型',dictCode:'fos_model_type'})
-        fieldList.push({type:'string',value:'specimenFamily',text:'标本类别',dictCode:''})
+        fieldList.push({type:'string',value:'specimenFamily',text:'标本类别',dictCode:'fos_specimen_family'})
         fieldList.push({type:'string',value:'specimenWhereabouts',text:'标本去向',dictCode:'fos_specimen_whereabouts'})
         fieldList.push({type:'string',value:'protectLevel',text:'保护级别',dictCode:'fos_protect_level'})
         fieldList.push({type:'string',value:'protectState',text:'标本状态',dictCode:'fos_protect_state'})
@@ -437,7 +438,7 @@
         fieldList.push({type:'string',value:'age',text:'时代',dictCode:''})
         fieldList.push({type:'string',value:'discription',text:'标本描述',dictCode:''})
         fieldList.push({type:'string',value:'appraiser',text:'鉴定人',dictCode:''})
-        fieldList.push({type:'string',value:'appraisalDate',text:'鉴定日期',dictCode:''})
+        fieldList.push({type:'date',value:'appraisalDate',text:'鉴定日期'})
         fieldList.push({type:'string',value:'siteLongitude',text:'产地经.',dictCode:''})
         fieldList.push({type:'string',value:'siteLatitude',text:'产地纬.',dictCode:''})
         fieldList.push({type:'int',value:'quantity',text:'数量',dictCode:''})
@@ -452,7 +453,7 @@
         fieldList.push({type:'string',value:'genus',text:'属',dictCode:''})
         fieldList.push({type:'string',value:'species',text:'种',dictCode:''})
         fieldList.push({type:'string',value:'excavationUnit',text:'发掘单位',dictCode:''})
-        fieldList.push({type:'string',value:'excavationDate',text:'发掘日期',dictCode:''})
+        fieldList.push({type:'date',value:'excavationDate',text:'发掘日期'})
         fieldList.push({type:'string',value:'excavationReason',text:'发掘原因',dictCode:''})
         fieldList.push({type:'string',value:'excavationReply',text:'发掘批复函',dictCode:''})
         fieldList.push({type:'string',value:'excavationReview',text:'发掘评审',dictCode:''})
