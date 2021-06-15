@@ -20,7 +20,7 @@ import lombok.experimental.Accessors;
 /**
  * @Description: 古生物化石标本登记表
  * @Author: jeecg-boot
- * @Date:   2021-06-18
+ * @Date:   2021-06-15
  * @Version: V1.0
  */
 @Data
@@ -36,7 +36,8 @@ public class FosSpecimenRegisterInfo implements Serializable {
     @ApiModelProperty(value = "编号")
     private java.lang.String id;
 	/**行政区*/
-	@Excel(name = "行政区", width = 15)
+	@Excel(name = "行政区", width = 15, dictTable = "fos_sys_area", dicText = "area_name", dicCode = "id")
+	@Dict(dictTable = "fos_sys_area", dicText = "area_name", dicCode = "id")
     @ApiModelProperty(value = "行政区")
     private java.lang.String district;
 	/**收藏人*/
@@ -44,7 +45,8 @@ public class FosSpecimenRegisterInfo implements Serializable {
     @ApiModelProperty(value = "收藏人")
     private java.lang.String collector;
 	/**收藏人性质*/
-	@Excel(name = "收藏人性质", width = 15)
+	@Excel(name = "收藏人性质", width = 15, dicCode = "fos_collector_nature")
+	@Dict(dicCode = "fos_collector_nature")
     @ApiModelProperty(value = "收藏人性质")
     private java.lang.String collectorNature;
 	/**联系人及联系电话*/
@@ -59,14 +61,20 @@ public class FosSpecimenRegisterInfo implements Serializable {
 	@Excel(name = "拉丁文名称", width = 15)
     @ApiModelProperty(value = "拉丁文名称")
     private java.lang.String latinName;
+	/**图片*/
+	@Excel(name = "图片", width = 15)
+    @ApiModelProperty(value = "图片")
+    private java.lang.String specimenPictures;
 	/**编号*/
 	@Excel(name = "编号", width = 15)
     @ApiModelProperty(value = "编号")
     private java.lang.String specimenId;
 	/**收藏日期*/
-	@Excel(name = "收藏日期", width = 15)
+	@Excel(name = "收藏日期", width = 15, format = "yyyy-MM-dd")
+	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @ApiModelProperty(value = "收藏日期")
-    private java.lang.String collectDate;
+    private java.util.Date collectDate;
 	/**标本来源*/
 	@Excel(name = "标本来源", width = 15, dicCode = "fos_specimen_origin")
 	@Dict(dicCode = "fos_specimen_origin")
@@ -77,8 +85,8 @@ public class FosSpecimenRegisterInfo implements Serializable {
     @ApiModelProperty(value = "标本位置")
     private java.lang.String specimenPosition;
 	/**模式标本*/
-	@Excel(name = "模式标本", width = 15, dicCode = "fos_model")
-	@Dict(dicCode = "fos_model")
+	@Excel(name = "模式标本", width = 15, dicCode = "is_open")
+	@Dict(dicCode = "is_open")
     @ApiModelProperty(value = "模式标本")
     private java.lang.String model;
 	/**模式类型*/
@@ -87,7 +95,8 @@ public class FosSpecimenRegisterInfo implements Serializable {
     @ApiModelProperty(value = "模式类型")
     private java.lang.String modelType;
 	/**标本类别*/
-	@Excel(name = "标本类别", width = 15)
+	@Excel(name = "标本类别", width = 15, dicCode = "fos_specimen_family")
+	@Dict(dicCode = "fos_specimen_family")
     @ApiModelProperty(value = "标本类别")
     private java.lang.String specimenFamily;
 	/**标本去向*/
@@ -122,9 +131,11 @@ public class FosSpecimenRegisterInfo implements Serializable {
     @ApiModelProperty(value = "鉴定人")
     private java.lang.String appraiser;
 	/**鉴定日期*/
-	@Excel(name = "鉴定日期", width = 15)
+	@Excel(name = "鉴定日期", width = 15, format = "yyyy-MM-dd")
+	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @ApiModelProperty(value = "鉴定日期")
-    private java.lang.String appraisalDate;
+    private java.util.Date appraisalDate;
 	/**产地经.*/
 	@Excel(name = "产地经.", width = 15)
     @ApiModelProperty(value = "产地经.")
@@ -182,9 +193,11 @@ public class FosSpecimenRegisterInfo implements Serializable {
     @ApiModelProperty(value = "发掘单位")
     private java.lang.String excavationUnit;
 	/**发掘日期*/
-	@Excel(name = "发掘日期", width = 15)
+	@Excel(name = "发掘日期", width = 15, format = "yyyy-MM-dd")
+	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @ApiModelProperty(value = "发掘日期")
-    private java.lang.String excavationDate;
+    private java.util.Date excavationDate;
 	/**发掘原因*/
 	@Excel(name = "发掘原因", width = 15)
     @ApiModelProperty(value = "发掘原因")
