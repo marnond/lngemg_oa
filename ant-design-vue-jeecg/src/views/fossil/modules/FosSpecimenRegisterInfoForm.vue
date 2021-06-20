@@ -50,7 +50,7 @@
               <a-input v-model="model.specimenId" placeholder="请输入编号"  ></a-input>
             </a-form-model-item>
           </a-col>
-          <a-col :span="12">fileList
+          <a-col :span="12">
             <a-form-model-item label="收藏日期" :labelCol="labelCol" :wrapperCol="wrapperCol" prop="collectDate">
               <j-date placeholder="请选择收藏日期" v-model="model.collectDate"  style="width: 100%" />
             </a-form-model-item>
