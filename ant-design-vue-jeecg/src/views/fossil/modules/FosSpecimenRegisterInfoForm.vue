@@ -40,9 +40,9 @@
               <a-input v-model="model.latinName" placeholder="请输入拉丁文名称"  ></a-input>
             </a-form-model-item>
           </a-col>
-          <a-col :span="12">
+          <a-col :lg="24">
             <a-form-model-item label="图片" :labelCol="labelCol" :wrapperCol="wrapperCol" prop="specimenPictures">
-              <j-image-upload isMultiple  v-model="model.specimenPictures" ></j-image-upload>
+              <j-image-upload isMultiple  v-model="fileList" ></j-image-upload>
             </a-form-model-item>
           </a-col>
           <a-col :span="12">
@@ -265,10 +265,11 @@
 
   import { httpAction, getAction } from '@/api/manage'
   import { validateDuplicateValue } from '@/utils/util'
-
+  import JImageUpload from '@/components/jeecg/JImageUpload'
   export default {
     name: 'FosSpecimenRegisterInfoForm',
     components: {
+      JImageUpload
     },
     props: {
       //表单禁用
@@ -290,6 +291,7 @@
           xs: { span: 24 },
           sm: { span: 16 },
         },
+        fileList: [],
         confirmLoading: false,
         validatorRules: {
            specimenName: [
@@ -349,6 +351,11 @@
       edit (record) {
         this.model = Object.assign({}, record);
         this.visible = true;
+        if (record.id) {
+          setTimeout(() => {
+            this.fileList = record.specimenPictures
+          }, 5)
+        }
       },
       submitForm () {
         const that = this;
@@ -364,6 +371,11 @@
             }else{
               httpurl+=this.url.edit;
                method = 'put';
+            }
+            if(this.fileList != '') {
+              this.model.specimenPictures = this.fileList;
+            }else{
+              this.model.specimenPictures = '';
             }
             httpAction(httpurl,this.model,method).then((res)=>{
               if(res.success){
