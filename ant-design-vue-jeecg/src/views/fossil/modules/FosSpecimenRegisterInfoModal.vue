@@ -1,34 +1,35 @@
 <template>
   <j-modal
     :title="title"
-    :width="width"
+    :width="1200"
     :visible="visible"
+    :maskClosable="false"
     switchFullscreen
     @ok="handleOk"
     :okButtonProps="{ class:{'jee-hidden': disableSubmit} }"
-    @cancel="handleCancel"
-    cancelText="关闭">
-    <fos-specimen-register-info-form ref="realForm" @ok="submitCallback" :disabled="disableSubmit"></fos-specimen-register-info-form>
+    @cancel="handleCancel">
+    <fos-specimen-register-info-form ref="realForm" @ok="submitCallback" :disabled="disableSubmit"/>
   </j-modal>
 </template>
 
 <script>
 
   import FosSpecimenRegisterInfoForm from './FosSpecimenRegisterInfoForm'
+
   export default {
     name: 'FosSpecimenRegisterInfoModal',
     components: {
       FosSpecimenRegisterInfoForm
     },
-    data () {
+    data() {
       return {
         title:'',
-        width:896,
+        width:800,
         visible: false,
         disableSubmit: false
       }
     },
-    methods: {
+    methods:{
       add () {
         this.visible=true
         this.$nextTick(()=>{
@@ -46,7 +47,7 @@
         this.visible = false;
       },
       handleOk () {
-        this.$refs.realForm.submitForm();
+        this.$refs.realForm.handleOk();
       },
       submitCallback(){
         this.$emit('ok');
@@ -58,3 +59,6 @@
     }
   }
 </script>
+
+<style scoped>
+</style>
