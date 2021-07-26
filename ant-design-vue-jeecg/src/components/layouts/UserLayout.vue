@@ -9,7 +9,7 @@
           </a>
         </div>
         <div class="desc">
-          辽宁省地质勘探矿业集团-古生物化石普查数据库系统
+          辽宁省自然资源厅办公系统-古生物化石普查数据库系统
         </div>
       </div>
 
@@ -22,7 +22,7 @@
           <a href="http://localhost:3000/LICENSE" target="_blank">条款</a>
         </div>
         <div class="copyright">
-          Copyright &copy; 2021 <a href="http://www.lngemg.com" target="_blank">辽宁省地矿集团</a> 版权所有
+          Copyright &copy; 2021 <a href="https://www.lndky.com/" target="_blank">辽宁省地质勘查院有限责任公司</a> 版权所有
         </div>
       </div>
     </div>

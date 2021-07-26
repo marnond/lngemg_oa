@@ -21,7 +21,7 @@
     props: {
       title: {
         type: String,
-        default: '辽宁省地质勘探矿业集团',
+        default: '辽宁省自然资源厅办公系统',
         required: false
       },
       showTitle: {

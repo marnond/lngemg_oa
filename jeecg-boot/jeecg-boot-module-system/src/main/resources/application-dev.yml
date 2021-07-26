@@ -131,7 +131,7 @@ spring:
         connectionProperties: druid.stat.mergeSql\=true;druid.stat.slowSqlMillis\=5000
       datasource:
         master:
-          url: jdbc:mysql://127.0.0.1:3306/lngemg_oa_dev?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+          url: jdbc:mysql://127.0.0.1:3306/ln_nature_oa_dev?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
           username: lnsgswhsDev
           password: lnsgswhs!2021Dev
           driver-class-name: com.mysql.cj.jdbc.Driver
@@ -180,9 +180,9 @@ jeecg :
   uploadType: local
   path :
     #文件上传根目录 设置
-    upload: D://lngemgUploadDev//upFiles
+    upload: D://lnNatureUploadDev//upFiles
     #webapp文件路径
-    webapp: D://lngemgUploadDev//webapp
+    webapp: D://lnNatureUploadDev//webapp
   shiro:
     excludeUrls: /test/jeecgDemo/demo3,/test/jeecgDemo/redisDemo/**,/category/**,/visual/**,/map/**,/jmreport/bigscreen2/**
   #阿里云oss存储和大鱼短信秘钥配置
