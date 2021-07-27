@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 23443
   tomcat:
     max-swallow-size: -1
   error:
@@ -131,9 +131,9 @@ spring:
         connectionProperties: druid.stat.mergeSql\=true;druid.stat.slowSqlMillis\=5000
       datasource:
           master:
-            url: jdbc:mysql://127.0.0.1:3306/jeecg-boot?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+            url: jdbc:mysql://127.0.0.1:3306/ln_nature_oa?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
             username: root
-            password: root
+            password: 12345678
             driver-class-name: com.mysql.cj.jdbc.Driver
           # 多数据源配置
           #multi-datasource1:
@@ -144,7 +144,7 @@ spring:
   #redis 配置
   redis:
      database: 0
-     host: 192.168.1.199
+     host: 127.0.0.1
      lettuce:
        pool:
          max-active: 8   #最大连接数据库连接数,设 -1 为没有限制
@@ -313,3 +313,10 @@ third-app:
       # appSecret
       client-secret: ??
       agent-id: ??
+#帆软相关
+fine:
+  report:
+    token:
+      # token有效时间30分钟：1800000，1小时：3600000，2小时：7200000，3小时：10800000，4小时：14400000
+      validTime: 14400000
+      key: Db70dwm1c0OUWjKt6lDNUO72JlbxHhT3vXTVrqgi

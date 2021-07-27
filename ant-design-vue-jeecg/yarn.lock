@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@a11y/focus-trap@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.nlark.com/@a11y/focus-trap/download/@a11y/focus-trap-1.0.5.tgz#0748189c37ca21255c702aa5de3ee00ed4821d22"
+  integrity sha1-B0gYnDfKISVccCql3j7gDtSCHSI=
+
 "@ant-design/colors@^3.1.0":
   version "3.2.2"
   resolved "https://registry.npmjs.org/@ant-design/colors/-/colors-3.2.2.tgz#5ad43d619e911f3488ebac303d606e66a8423903"
@@ -157,6 +162,19 @@
   integrity sha512-cbUta0hIJrKEaW3eKoGarz3Ita+9qUPF2YzTj8A6wds/nNiy20G26ztIWHU+5ThLc13B1n5Ik52LbaCaeg9enA==
   dependencies:
     "@antv/gl-matrix" "^2.7.1"
+
+"@arcgis/core@^4.20.2":
+  version "4.20.2"
+  resolved "https://registry.nlark.com/@arcgis/core/download/@arcgis/core-4.20.2.tgz#baba4066b90cb9f6b6b7c0a43ff6e6eee14af919"
+  integrity sha1-urpAZrkMufa2t8CkP/bm7uFK+Rk=
+  dependencies:
+    "@esri/arcgis-html-sanitizer" "~2.6.1"
+    "@esri/calcite-colors" "~6.0.0"
+    "@esri/calcite-components" "1.0.0-beta.56"
+    "@popperjs/core" "~2.9.2"
+    focus-trap "~6.5.1"
+    moment "~2.29.1"
+    sortablejs "~1.13.0"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4":
   version "7.10.4"
@@ -847,6 +865,32 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@esri/arcgis-html-sanitizer@~2.6.1":
+  version "2.6.1"
+  resolved "https://registry.nlark.com/@esri/arcgis-html-sanitizer/download/@esri/arcgis-html-sanitizer-2.6.1.tgz#49d327e1ee0b1c4e038a56baca4ec248663dc31e"
+  integrity sha1-SdMn4e4LHE4Dila6yk7CSGY9wx4=
+  dependencies:
+    lodash.isplainobject "^4.0.6"
+    xss "^1.0.9"
+
+"@esri/calcite-colors@~6.0.0":
+  version "6.0.0"
+  resolved "https://registry.npm.taobao.org/@esri/calcite-colors/download/@esri/calcite-colors-6.0.0.tgz#ebf4b4e404a3d12b49bf894eedd2d542c87e7e0f"
+  integrity sha1-6/S05ASj0StJv4lO7dLVQsh+fg8=
+
+"@esri/calcite-components@1.0.0-beta.56":
+  version "1.0.0-beta.56"
+  resolved "https://registry.nlark.com/@esri/calcite-components/download/@esri/calcite-components-1.0.0-beta.56.tgz#94ffd478c73894318841b82a05ec1bf53b39552b"
+  integrity sha1-lP/UeMc4lDGIQbgqBewb9Ts5VSs=
+  dependencies:
+    "@a11y/focus-trap" "1.0.5"
+    "@popperjs/core" "2.9.2"
+    "@stencil/core" "2.6.0"
+    "@types/color" "3.0.1"
+    color "3.1.3"
+    lodash-es "4.17.21"
+    sortablejs "1.13.0"
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.npmjs.org/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -906,6 +950,11 @@
   resolved "https://registry.npmjs.org/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
+"@popperjs/core@2.9.2", "@popperjs/core@~2.9.2":
+  version "2.9.2"
+  resolved "https://registry.npm.taobao.org/@popperjs/core/download/@popperjs/core-2.9.2.tgz?cache=0&sync_timestamp=1617290098226&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40popperjs%2Fcore%2Fdownload%2F%40popperjs%2Fcore-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
+  integrity sha1-rep7aVPLs0ZRdmsFSEaOdDxqI1M=
+
 "@simonwep/pickr@~1.7.0":
   version "1.7.1"
   resolved "https://registry.npmjs.org/@simonwep/pickr/-/pickr-1.7.1.tgz#7bdcccca2041967434f9d7e18720e85598601008"
@@ -922,6 +971,11 @@
     chalk "^1.1.3"
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
+
+"@stencil/core@2.6.0":
+  version "2.6.0"
+  resolved "https://registry.nlark.com/@stencil/core/download/@stencil/core-2.6.0.tgz#29da96d8b6fc83e689b9f297ef3e8b59b90a676a"
+  integrity sha1-KdqW2Lb8g+aJufKX7z6LWbkKZ2o=
 
 "@tinymce/tinymce-vue@^2.1.0":
   version "2.1.0"
@@ -950,10 +1004,24 @@
   dependencies:
     "@types/tern" "*"
 
-"@types/color-name@^1.1.1":
+"@types/color-convert@*":
+  version "2.0.0"
+  resolved "https://registry.nlark.com/@types/color-convert/download/@types/color-convert-2.0.0.tgz?cache=0&sync_timestamp=1621240740197&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fcolor-convert%2Fdownload%2F%40types%2Fcolor-convert-2.0.0.tgz#8f5ee6b9e863dcbee5703f5a517ffb13d3ea4e22"
+  integrity sha1-j17muehj3L7lcD9aUX/7E9PqTiI=
+  dependencies:
+    "@types/color-name" "*"
+
+"@types/color-name@*", "@types/color-name@^1.1.1":
   version "1.1.1"
   resolved "https://registry.npmjs.org/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
+
+"@types/color@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.nlark.com/@types/color/download/@types/color-3.0.1.tgz#2900490ed04da8116c5058cd5dba3572d5a25071"
+  integrity sha1-KQBJDtBNqBFsUFjNXbo1ctWiUHE=
+  dependencies:
+    "@types/color-convert" "*"
 
 "@types/d3-format@*":
   version "1.3.1"
@@ -3358,6 +3426,22 @@ color-string@^1.5.2:
     color-name "^1.0.0"
     simple-swizzle "^0.2.2"
 
+color-string@^1.5.4:
+  version "1.6.0"
+  resolved "https://registry.nlark.com/color-string/download/color-string-1.6.0.tgz#c3915f61fe267672cb7e1e064c9d692219f6c312"
+  integrity sha1-w5FfYf4mdnLLfh4GTJ1pIhn2wxI=
+  dependencies:
+    color-name "^1.0.0"
+    simple-swizzle "^0.2.2"
+
+color@3.1.3:
+  version "3.1.3"
+  resolved "https://registry.nlark.com/color/download/color-3.1.3.tgz?cache=0&sync_timestamp=1626601281817&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcolor%2Fdownload%2Fcolor-3.1.3.tgz#ca67fb4e7b97d611dcde39eceed422067d91596e"
+  integrity sha1-ymf7TnuX1hHc3jns7tQiBn2RWW4=
+  dependencies:
+    color-convert "^1.9.1"
+    color-string "^1.5.4"
+
 color@^0.11.0:
   version "0.11.4"
   resolved "https://registry.npmjs.org/color/-/color-0.11.4.tgz#6d7b5c74fb65e841cd48792ad1ed5e07b904d764"
@@ -3401,7 +3485,7 @@ combined-stream@^1.0.6, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@2, commander@^2.18.0, commander@^2.20.0:
+commander@2, commander@^2.18.0, commander@^2.20.0, commander@^2.20.3:
   version "2.20.3"
   resolved "https://registry.npmjs.org/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
@@ -3859,6 +3943,11 @@ cssesc@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
+
+cssfilter@0.0.10:
+  version "0.0.10"
+  resolved "https://registry.npm.taobao.org/cssfilter/download/cssfilter-0.0.10.tgz#c6d2672632a2e5c83e013e6864a42ce8defd20ae"
+  integrity sha1-xtJnJjKi5cg+AT5oZKQs6N79IK4=
 
 cssnano-preset-default@^4.0.0, cssnano-preset-default@^4.0.7:
   version "4.0.7"
@@ -5562,6 +5651,13 @@ fmin@0.0.2:
     tape "^4.5.1"
     uglify-js "^2.6.2"
 
+focus-trap@~6.5.1:
+  version "6.5.1"
+  resolved "https://registry.nlark.com/focus-trap/download/focus-trap-6.5.1.tgz#2d2bb91198f17e8bc52070f1fb48ac36be4230b5"
+  integrity sha1-LSu5EZjxfovFIHDx+0isNr5CMLU=
+  dependencies:
+    tabbable "^5.2.0"
+
 follow-redirects@1.5.10:
   version "1.5.10"
   resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.5.10.tgz#7b7a9f9aea2fdff36786a94ff643ed07f4ff5e2a"
@@ -7154,6 +7250,11 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
+lodash-es@4.17.21:
+  version "4.17.21"
+  resolved "https://registry.npm.taobao.org/lodash-es/download/lodash-es-4.17.21.tgz?cache=0&sync_timestamp=1613836280924&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Flodash-es%2Fdownload%2Flodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
+  integrity sha1-Q+YmxG5lkbd1C+srUBFzkMYJ4+4=
+
 lodash._baseassign@^3.0.0:
   version "3.2.0"
   resolved "https://registry.npmjs.org/lodash._baseassign/-/lodash._baseassign-3.2.0.tgz#8c38a099500f215ad09e59f1722fd0c52bfe0a4e"
@@ -7247,6 +7348,11 @@ lodash.isarray@^3.0.0:
   version "3.0.4"
   resolved "https://registry.npmjs.org/lodash.isarray/-/lodash.isarray-3.0.4.tgz#79e4eb88c36a8122af86f844aa9bcd851b5fbb55"
   integrity sha1-eeTriMNqgSKvhvhEqpvNhRtfu1U=
+
+lodash.isplainobject@^4.0.6:
+  version "4.0.6"
+  resolved "https://registry.npm.taobao.org/lodash.isplainobject/download/lodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
+  integrity sha1-fFJqUtibRcRcxpC4gWO+BJf1UMs=
 
 lodash.kebabcase@^4.1.1:
   version "4.1.1"
@@ -7677,7 +7783,7 @@ moment-timezone@^0.5.31:
   dependencies:
     moment ">= 2.9.0"
 
-"moment@>= 2.9.0":
+"moment@>= 2.9.0", moment@~2.29.1:
   version "2.29.1"
   resolved "https://registry.npmjs.org/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
@@ -10231,6 +10337,11 @@ sort-keys@^1.0.0:
   dependencies:
     is-plain-obj "^1.0.0"
 
+sortablejs@1.13.0, sortablejs@~1.13.0:
+  version "1.13.0"
+  resolved "https://registry.nlark.com/sortablejs/download/sortablejs-1.13.0.tgz#3ab2473f8c69ca63569e80b1cd1b5669b51269e9"
+  integrity sha1-OrJHP4xpymNWnoCxzRtWabUSaek=
+
 sortablejs@^1.10.1:
   version "1.10.2"
   resolved "https://registry.npmjs.org/sortablejs/-/sortablejs-1.10.2.tgz#6e40364d913f98b85a14f6678f92b5c1221f5290"
@@ -10719,6 +10830,11 @@ svgo@^1.0.0:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+tabbable@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.npm.taobao.org/tabbable/download/tabbable-5.2.0.tgz#4fba60991d8bb89d06e5d9455c92b453acf88fb2"
+  integrity sha1-T7pgmR2LuJ0G5dlFXJK0U6z4j7I=
 
 table@4.0.2:
   version "4.0.2"
@@ -11882,6 +11998,14 @@ xregexp@^4.2.4:
   integrity sha512-7jXDIFXh5yJ/orPn4SXjuVrWWoi4Cr8jfV1eHv9CixKSbU+jY4mxfrBwAuDvupPNKpMUY+FeIqsVw/JLT9+B8g==
   dependencies:
     "@babel/runtime-corejs3" "^7.8.3"
+
+xss@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.nlark.com/xss/download/xss-1.0.9.tgz#3ffd565571ff60d2e40db7f3b80b4677bec770d2"
+  integrity sha1-P/1WVXH/YNLkDbfzuAtGd77HcNI=
+  dependencies:
+    commander "^2.20.3"
+    cssfilter "0.0.10"
 
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.2"

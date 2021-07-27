@@ -1,5 +1,5 @@
 server:
-  port: 23080
+  port: 23444
   tomcat:
     max-swallow-size: -1
   error:
@@ -312,3 +312,10 @@ third-app:
       # appSecret
       client-secret: ??
       agent-id: ??
+#帆软相关
+fine:
+  report:
+    token:
+      # token有效时间30分钟：1800000，1小时：3600000，2小时：7200000，3小时：10800000，4小时：14400000
+      validTime: 14400000
+      key: Db70dwm1c0OUWjKt6lDNUO72JlbxHhT3vXTVrqgi
